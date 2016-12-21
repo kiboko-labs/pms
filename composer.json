@@ -2,7 +2,7 @@
     "name": "kiboko/pms",
     "description": "Kiboko Price Management System",
     "homepage": "https://github.com/orocrm/platform-application.git",
-    "license": "MIT",
+    "license": "proprietary",
     "autoload": {
         "psr-4": {
             "Kiboko\\Bundle\\PriceBundle\\": "src/Kiboko/Bundle/PriceBundle/"
