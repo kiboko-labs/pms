@@ -1,0 +1,6 @@
+suites:
+    kiboko_pricing_bundle:
+        namespace: Kiboko\Bundle\PricingBundle
+        psr4_prefix: Kiboko\Bundle\PricingBundle
+        src_path: src/Bundle/PricingBundle/
+        spec_path: src/Bundle/PricingBundle/

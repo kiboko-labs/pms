@@ -1,0 +1,8 @@
+kiboko_pms:
+  pricing:
+    price_list:
+      grid:
+        columns:
+          name: Product name
+          sku: SKU
+          priceListsCount: Price lists
