@@ -1,0 +1,6 @@
+{# src/AppBundle/Resources/views/Task/index.html.twig #}
+{% extends 'OroUIBundle:actions:index.html.twig' %}
+
+{% set gridName = 'kiboko-pms-customer-segment-price-history-datagrid' %}
+{% set params = { productId: product.id, customerSegmentId: customerSegment.id } %}
+{% set pageTitle = "Price History for #{product.sku}, on Customer Segment #{customerSegment.name}" %}

@@ -1,11 +1,11 @@
 {
   "name": "kiboko/pms",
   "description": "Kiboko Price Management System",
-  "homepage": "https://github.com/orocrm/platform-application.git",
+  "homepage": "http://kiboko.fr",
   "license": "proprietary",
   "autoload": {
     "psr-4": {
-      "Kiboko\\Bundle\\PricingBundle\\": "src/Bundle/PricingBundle/",
+      "Kiboko\\Bundle\\PricingManagementBundle\\": "src/Bundle/PricingManagementBundle/",
       "Kiboko\\Component\\DataModel\\": "src/Component/DataModel/",
       "Kiboko\\Component\\Inventory\\": "src/Component/Inventory/",
       "Kiboko\\Component\\Pricing\\": "src/Component/Pricing/",

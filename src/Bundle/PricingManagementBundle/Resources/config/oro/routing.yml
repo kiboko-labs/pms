@@ -1,0 +1,4 @@
+kiboko_pms_pricing:
+    resource: "@KibokoPricingManagementBundle/Controller"
+    prefix: /pricing
+    type: annotation

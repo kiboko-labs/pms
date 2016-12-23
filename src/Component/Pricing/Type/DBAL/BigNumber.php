@@ -37,7 +37,7 @@ class BigNumber extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return BrickBigNumber::of($value);
+        return $value !== null ? BrickBigNumber::of($value) : BrickBigNumber::of(0);
     }
 
     /**

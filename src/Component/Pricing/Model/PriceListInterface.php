@@ -2,7 +2,7 @@
 
 namespace Kiboko\Component\Pricing\Model;
 
-use Kiboko\Bundle\PricingBundle\Model\ProductInterface;
+use Kiboko\Bundle\PricingManagementBundle\Model\ProductInterface;
 
 interface PriceListInterface
 {
