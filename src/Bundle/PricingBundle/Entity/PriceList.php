@@ -4,14 +4,14 @@ namespace Kiboko\Bundle\PricingBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Kiboko\Bundle\PricingBundle\Model\ActivableInterface;
-use Kiboko\Bundle\PricingBundle\Model\CustomerSegmentInterface;
-use Kiboko\Bundle\PricingBundle\Model\DateIntervalInterface;
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\NamedInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceListInterface;
-use Kiboko\Bundle\PricingBundle\Model\ProductInterface;
+use Kiboko\Component\DataModel\Model\ActivableInterface;
+use Kiboko\Component\DataModel\Model\DateIntervalInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\DataModel\Model\NamedInterface;
+use Kiboko\Component\Pricing\Model\CustomerSegmentInterface;
+use Kiboko\Component\Pricing\Model\PriceInterface;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
+use Kiboko\Component\Product\Model\ProductInterface;
 
 use Doctrine\ORM\Mapping as ORM;
 

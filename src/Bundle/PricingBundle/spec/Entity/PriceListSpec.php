@@ -2,11 +2,11 @@
 
 namespace spec\Kiboko\Bundle\PricingBundle\Entity;
 
-use Kiboko\Bundle\PricingBundle\Model\ActivableInterface;
-use Kiboko\Bundle\PricingBundle\Model\DateIntervalInterface;
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\NamedInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceListInterface;
+use Kiboko\Component\DataModel\Model\ActivableInterface;
+use Kiboko\Component\DataModel\Model\DateIntervalInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\DataModel\Model\NamedInterface;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

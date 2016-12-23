@@ -1,10 +1,10 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Model\Mutable;
+namespace Kiboko\Component\Pricing\Model\Mutable;
 
-use Kiboko\Bundle\PricingBundle\Model\PriceHistoryInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceListInterface;
+use Kiboko\Component\Pricing\Model\PriceHistoryInterface;
+use Kiboko\Component\Pricing\Model\PriceInterface;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
 
 interface MutablePriceInterface extends PriceInterface, MutablePriceAmountInterface
 {

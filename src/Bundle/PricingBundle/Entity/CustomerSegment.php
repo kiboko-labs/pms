@@ -3,9 +3,9 @@
 namespace Kiboko\Bundle\PricingBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use Kiboko\Bundle\PricingBundle\Model\CustomerSegmentInterface;
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceListInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\Pricing\Model\CustomerSegmentInterface;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -3,10 +3,11 @@
 namespace Kiboko\Bundle\PricingBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\NamedInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceListInterface;
-use Kiboko\Bundle\PricingBundle\Model\ProductInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\DataModel\Model\NamedInterface;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
+use Kiboko\Component\Product\Model\IdentifiableBySkuInterface;
+use Kiboko\Component\Product\Model\ProductInterface;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,7 +21,11 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\UniqueConstraint(name="uniqueSku", columns={"sku"})
  * })
  */
-class Product implements ProductInterface, IdentifiableInterface, NamedInterface
+class Product implements
+    ProductInterface,
+    IdentifiableInterface,
+    IdentifiableBySkuInterface,
+    NamedInterface
 {
     /**
      * @ORM\Column(type="integer")

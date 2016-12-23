@@ -5,7 +5,11 @@
   "license": "proprietary",
   "autoload": {
     "psr-4": {
-      "Kiboko\\Bundle\\PricingBundle\\": "src/Bundle/PricingBundle/"
+      "Kiboko\\Bundle\\PricingBundle\\": "src/Bundle/PricingBundle/",
+      "Kiboko\\Component\\DataModel\\": "src/Component/DataModel/",
+      "Kiboko\\Component\\Inventory\\": "src/Component/Inventory/",
+      "Kiboko\\Component\\Pricing\\": "src/Component/Pricing/",
+      "Kiboko\\Component\\Product\\": "src/Component/Product/"
     }
   },
   "repositories": [

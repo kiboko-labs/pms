@@ -2,8 +2,8 @@
 
 namespace spec\Kiboko\Bundle\PricingBundle\Entity;
 
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\ProductInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\Product\Model\ProductInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

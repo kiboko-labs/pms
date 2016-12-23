@@ -3,9 +3,8 @@
 namespace Kiboko\Bundle\PricingBundle\Entity;
 
 use Brick\Math\BigNumber;
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\Mutable\MutablePriceAmountInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceAmountInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\Pricing\Model\Mutable\MutablePriceAmountInterface;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,7 +27,7 @@ class PriceAmount implements MutablePriceAmountInterface, IdentifiableInterface
     /**
      * @var BigNumber
      *
-     * @ORM\Column(name="amount", type="decimal", scale=8, precision=24)
+     * @ORM\Column(name="amount", type="big_number", scale=8, precision=24)
      */
     private $amount;
 

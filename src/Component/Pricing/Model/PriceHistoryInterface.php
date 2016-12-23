@@ -1,11 +1,11 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Model;
+namespace Kiboko\Component\Pricing\Model;
 
 /**
  * Class Price
  *
- * @package Kiboko\Bundle\PricingBundle\Entity
+ * @package Kiboko\Component\Pricing\Entity
  *
  * @ORM\Entity
  * @ORM\Table(name="kiboko_pricing_price_history")

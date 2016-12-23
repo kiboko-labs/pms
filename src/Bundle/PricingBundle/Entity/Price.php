@@ -4,12 +4,12 @@ namespace Kiboko\Bundle\PricingBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\Mutable\MutablePriceInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceHistoryInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\Pricing\Model\Mutable\MutablePriceInterface;
+use Kiboko\Component\Pricing\Model\PriceHistoryInterface;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
 
 use Doctrine\ORM\Mapping as ORM;
-use Kiboko\Bundle\PricingBundle\Model\PriceListInterface;
 
 /**
  * Class Price

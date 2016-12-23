@@ -1,6 +1,8 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Model;
+namespace Kiboko\Component\Pricing\Model;
+
+use Kiboko\Bundle\PricingBundle\Model\ProductInterface;
 
 interface PriceListInterface
 {

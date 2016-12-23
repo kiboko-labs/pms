@@ -1,9 +1,9 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Model\Mutable;
+namespace Kiboko\Component\Pricing\Model\Mutable;
 
 use Brick\Math\BigNumber;
-use Kiboko\Bundle\PricingBundle\Model\PriceAmountInterface;
+use Kiboko\Component\Pricing\Model\PriceAmountInterface;
 
 interface MutablePriceAmountInterface extends PriceAmountInterface
 {

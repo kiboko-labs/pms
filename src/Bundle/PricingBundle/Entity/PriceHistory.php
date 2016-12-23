@@ -2,10 +2,9 @@
 
 namespace Kiboko\Bundle\PricingBundle\Entity;
 
-use Kiboko\Bundle\PricingBundle\Model\IdentifiableInterface;
-use Kiboko\Bundle\PricingBundle\Model\Mutable\MutablePriceHistoryInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceHistoryInterface;
-use Kiboko\Bundle\PricingBundle\Model\PriceInterface;
+use Kiboko\Component\DataModel\Model\IdentifiableInterface;
+use Kiboko\Component\Pricing\Model\Mutable\MutablePriceHistoryInterface;
+use Kiboko\Component\Pricing\Model\PriceInterface;
 
 use Doctrine\ORM\Mapping as ORM;
 

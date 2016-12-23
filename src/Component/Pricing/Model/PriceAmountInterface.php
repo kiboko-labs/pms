@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Model;
+namespace Kiboko\Component\Pricing\Model;
 
 use Brick\Math\BigNumber;
 

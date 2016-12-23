@@ -1,8 +1,9 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Model;
+namespace Kiboko\Component\Product\Model;
 
 use Doctrine\Common\Collections\Collection;
+use Kiboko\Component\Pricing\Model\PriceListInterface;
 
 interface ProductInterface
 {
