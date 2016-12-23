@@ -2,9 +2,13 @@
 
 namespace Kiboko\Bundle\PricingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Kiboko\Component\DataModel\Model\IdentifiableInterface;
 use Kiboko\Component\DataModel\Model\NamedInterface;
+use Kiboko\Component\Inventory\Model\InventoryUnitAwareInterfae;
+use Kiboko\Component\Inventory\Model\InventoryUnitInterface;
+use Kiboko\Component\Inventory\Model\WarehouseInventoryUnitInterface;
 use Kiboko\Component\Pricing\Model\PriceListInterface;
 use Kiboko\Component\Product\Model\IdentifiableBySkuInterface;
 use Kiboko\Component\Product\Model\ProductInterface;
@@ -25,9 +29,12 @@ class Product implements
     ProductInterface,
     IdentifiableInterface,
     IdentifiableBySkuInterface,
-    NamedInterface
+    NamedInterface,
+    InventoryUnitAwareInterfae
 {
     /**
+     * @var int
+     *
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -54,6 +61,27 @@ class Product implements
      * @ORM\OneToMany(targetEntity="Kiboko\Bundle\PricingBundle\Entity\PriceList", mappedBy="product")
      */
     private $priceLists;
+
+    /**
+     * @var InventoryUnitInterface
+     *
+     * @ORM\OneToOne(targetEntity="Kiboko\Bundle\PricingBundle\Entity\ProductInventoryUnit", mappedBy="product")
+     * @ORM\JoinColumn(name="global_inventory_unit_id", referencedColumnName="id")
+     */
+    private $inventoryUnit;
+
+    /**
+     * @var Collection|WarehouseInventoryUnitInterface[]
+     *
+     * @ORM\OneToMany(targetEntity="Kiboko\Bundle\PricingBundle\Entity\WarehouseInventoryUnit", mappedBy="product")
+     */
+    private $warehouseInventoryUnits;
+
+    public function __construct()
+    {
+        $this->priceLists = new ArrayCollection();
+        $this->warehouseInventoryUnits = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -155,6 +183,70 @@ class Product implements
     public function setPriceLists(array $priceLists) : ProductInterface
     {
         $this->priceLists = $priceLists;
+
+        return $this;
+    }
+
+    /**
+     * @return InventoryUnitInterface
+     */
+    public function getInventoryUnit() : InventoryUnitInterface
+    {
+        return $this->inventoryUnit;
+    }
+
+    /**
+     * @param InventoryUnitInterface $inventoryUnit
+     *
+     * @return ProductInterface
+     */
+    public function setInventoryUnit(InventoryUnitInterface $inventoryUnit) : ProductInterface
+    {
+        $this->inventoryUnit = $inventoryUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return PriceListInterface[]
+     */
+    public function getWarehouseInventoryUnits() : array
+    {
+        return $this->warehouseInventoryUnits->toArray();
+    }
+
+    /**
+     * @param WarehouseInventoryUnitInterface $warehouseInventoryUnit
+     *
+     * @return ProductInterface
+     */
+    public function addWarehouseInventoryUnit(WarehouseInventoryUnitInterface $warehouseInventoryUnit) : ProductInterface
+    {
+        $this->warehouseInventoryUnits->add($warehouseInventoryUnit);
+
+        return $this;
+    }
+
+    /**
+     * @param WarehouseInventoryUnitInterface $warehouseInventoryUnit
+     *
+     * @return ProductInterface
+     */
+    public function removeWarehouseInventoryUnit(WarehouseInventoryUnitInterface $warehouseInventoryUnit) : ProductInterface
+    {
+        $this->warehouseInventoryUnits->removeElement($warehouseInventoryUnit);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection|PriceListInterface[] $warehouseInventoryUnits
+     *
+     * @return ProductInterface
+     */
+    public function setWarehouseInventoryUnits(array $warehouseInventoryUnits) : ProductInterface
+    {
+        $this->warehouseInventoryUnits = new ArrayCollection($warehouseInventoryUnits);
 
         return $this;
     }

@@ -53,6 +53,8 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping:         true
+        types:
+            big_number:  Kiboko\Bundle\PricingBundle\Type\DBAL\BigNumber
 
 # Twig Configuration
 twig:

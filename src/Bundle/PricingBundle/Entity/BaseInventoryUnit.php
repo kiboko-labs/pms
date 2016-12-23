@@ -4,7 +4,9 @@ namespace Kiboko\Bundle\PricingBundle\Entity;
 use Brick\Math\BigNumber;
 use Kiboko\Component\DataModel\Model\IdentifiableInterface;
 use Kiboko\Component\Inventory\Model\InventoryUnitInterface;
-use Kiboko\Component\Product\Model\ProductInterface;
+use Kiboko\Component\Product\Model\ProductAwareInterface;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class BaseInventoryUnit
@@ -13,7 +15,7 @@ use Kiboko\Component\Product\Model\ProductInterface;
  *
  * @ORM\MappedSuperclass
  */
-class BaseInventoryUnit implements InventoryUnitInterface, IdentifiableInterface, ProductAwareInterface
+abstract class BaseInventoryUnit implements InventoryUnitInterface, IdentifiableInterface, ProductAwareInterface
 {
     /**
      * @ORM\Column(type="integer")
@@ -49,11 +51,6 @@ class BaseInventoryUnit implements InventoryUnitInterface, IdentifiableInterface
      * @ORM\Column(name="forecasted", type="big_number", scale=8, precision=24)
      */
     private $forecastedAmount;
-
-    /**
-     * @var ProductInterface
-     */
-    private $product;
 
     /**
      * @return mixed
@@ -153,24 +150,5 @@ class BaseInventoryUnit implements InventoryUnitInterface, IdentifiableInterface
     public function getForecastedAmount() : BigNumber
     {
         return $this->forecastedAmount;
-    }
-    /**
-     * @return ProductInterface
-     */
-    public function getProduct() : ProductInterface
-    {
-        return $this->product;
-    }
-
-    /**
-     * @param ProductInterface $product
-     *
-     * @return BaseInventoryUnit
-     */
-    public function setProduct(ProductInterface $product) : BaseInventoryUnit
-    {
-        $this->product = $product;
-
-        return $this;
     }
 }

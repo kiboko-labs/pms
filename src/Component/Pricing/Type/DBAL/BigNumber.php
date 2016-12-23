@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiboko\Bundle\PricingBundle\Type\DBAL;
+namespace Kiboko\Component\Pricing\Type\DBAL;
 
 use Brick\Math\BigNumber as BrickBigNumber;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
