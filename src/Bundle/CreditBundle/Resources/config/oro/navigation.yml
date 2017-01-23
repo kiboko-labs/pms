@@ -1,0 +1,20 @@
+navigation:
+  menu_config:
+    items:
+      kiboko_credit_tab:
+        label: Credit
+        uri:   '#'
+        extras:
+          position: 5
+#      kiboko_gift_card:
+#        label: Gift Cards
+#        route: kiboko_mms_credit_gift_card
+    tree:
+      application_menu:
+        children:
+          kiboko_credit_tab:
+#            children:
+#              kiboko_mms_credit_gift_card: ~
+
+#  titles:
+#    kiboko_price_list: Price List

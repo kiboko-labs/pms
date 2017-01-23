@@ -1,0 +1,4 @@
+doctrine:
+    dbal:
+        types:
+            quantity: Kiboko\Component\Inventory\DoctrineExtension\DBAL\Type\QuantityType

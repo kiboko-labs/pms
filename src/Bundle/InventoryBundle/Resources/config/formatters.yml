@@ -1,0 +1,16 @@
+parameters:
+    kiboko_inventory.formatter.property_type.class: Kiboko\Bundle\InventoryBundle\Formatter\QuantityValueTypeFormatter
+    kiboko_inventory.datagrid_extension.formatter.property.quantity_property.class: Kiboko\Bundle\InventoryBundle\Formatter\Property\QuantityProperty
+
+services:
+    kiboko_inventory.formatter.property_type:
+        class: '%kiboko_inventory.formatter.property_type.class%'
+
+    kiboko_inventory.datagrid_extension.formatter.property.quantity_property:
+        class: %kiboko_inventory.datagrid_extension.formatter.property.quantity_property.class%
+        arguments:
+            - '@kiboko_inventory.formatter.property_type'
+            - '@logger'
+        tags:
+            - { name: oro_datagrid.extension.formatter.property, type: quantity }
+

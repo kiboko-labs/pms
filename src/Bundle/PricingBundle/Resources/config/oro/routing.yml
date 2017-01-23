@@ -1,0 +1,4 @@
+kiboko_mms_pricing:
+    resource: "@KibokoPricingBundle/Controller"
+    prefix: /pricing
+    type: annotation

@@ -1,0 +1,113 @@
+datagrids:
+  kiboko-mms-catalog-products-datagrid:
+    source:
+      type: orm
+      query:
+        select:
+          - p
+          - COUNT(priceLists.id) as priceListsCount
+          - inventoryUnits.onHandAmount
+          - inventoryUnits.reservedAmount
+          - inventoryUnits.incomingAmount
+          - inventoryUnits.forecastedAmount
+        from:
+          - { table: KibokoCatalogBundle:Product, alias: p }
+        join:
+          left:
+            - { join: p.priceLists, alias: priceLists }
+            - { join: p.inventoryUnits, alias: inventoryUnits }
+        where:
+          and:
+            - inventoryUnits.unitQuantity = 1
+    columns:
+      name:
+        label: kiboko_mms.pricing.products.grid.columns.name
+      sku:
+        label: kiboko_mms.pricing.products.grid.columns.sku
+      priceListsCount:
+        label: kiboko_mms.pricing.products.grid.columns.priceListsCount
+      onHandAmount:
+        label: kiboko_mms.pricing.products.grid.columns.onHandAmount
+        type: quantity
+      reservedAmount:
+        label: kiboko_mms.pricing.products.grid.columns.reservedAmount
+        type: quantity
+      incomingAmount:
+        label: kiboko_mms.pricing.products.grid.columns.incomingAmount
+        type: quantity
+      forecastedAmount:
+        label: kiboko_mms.pricing.products.grid.columns.forecastedAmount
+        type: quantity
+    filters:
+      columns:
+        name:
+          type: string
+          data_name: p.name
+        sku:
+          type: string
+          data_name: p.sku
+#        onHandAmount:
+#          type: string
+#          data_name: inventoryUnit.onHandAmount
+#        reservedAmount:
+#          type: string
+#          data_name: inventoryUnit.reservedAmount
+#        incomingAmount:
+#          type: string
+#          data_name: inventoryUnit.incomingAmount
+#        forecastedAmount:
+#          type: string
+#          data_name: inventoryUnit.forecastedAmount
+    sorters:
+      columns:
+        name:
+          data_name: p.name
+        sku:
+          data_name: p.sku
+#        onHandAmount:
+#          data_name: inventoryUnit.onHandAmount
+#        reservedAmount:
+#          data_name: inventoryUnit.reservedAmount
+#        incomingAmount:
+#          data_name: inventoryUnit.incomingAmount
+#        forecastedAmount:
+#          data_name: inventoryUnit.forecastedAmount
+      default:
+        sku: DESC
+
+    properties:
+      id: ~
+      price_history_link:
+        type:   url
+        route:  kiboko_mms_pricing_price_history
+        params:
+          productId: id
+      price_view_link:
+        type:   url
+        route:  kiboko_mms_pricing_price_list
+        params:
+          id: id
+      inventory_view_link:
+        type:   url
+        route:  kiboko_mms_pricing_warehouse_inventory_unit
+        params:
+          id: id
+    actions:
+      price_graphs:
+        type: navigate
+        label: oro.grid.action.view
+        link: price_history_link
+        icon: signal
+        rowAction: true
+      price_view:
+        type: navigate
+        label: oro.grid.action.view
+        link: price_view_link
+        icon: usd
+        rowAction: true
+      inventory_view:
+        type: navigate
+        label: oro.grid.action.view
+        link: inventory_view_link
+        icon: barcode
+        rowAction: true

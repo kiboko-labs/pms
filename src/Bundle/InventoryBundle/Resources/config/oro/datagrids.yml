@@ -1,0 +1,172 @@
+datagrids:
+  kiboko-mms-inventory-warehouse-product-inventoryunit-datagrid:
+    source:
+      type: orm
+      query:
+        select:
+          - wiu
+          - product.name as productName
+          - warehouse.name as warehouseName
+        from:
+          - { table: KibokoInventoryBundle:WarehouseInventoryUnit, alias: wiu }
+        join:
+          left:
+            - { join: wiu.product, alias: product }
+            - { join: wiu.warehouse, alias: warehouse }
+        where:
+          and:
+            - product.id = :productId
+      bind_parameters:
+        productId: productId
+    columns:
+      productName:
+        label: kiboko_mms.pricing.warehouse_inventory_unit.grid.columns.productName
+      warehouseName:
+        label: kiboko_mms.pricing.warehouse_inventory_unit.grid.columns.warehouseName
+      onHandAmount:
+        label: kiboko_mms.pricing.warehouse_inventory_unit.grid.columns.onHandAmount
+#        frontend_type: decimal
+      reservedAmount:
+        label: kiboko_mms.pricing.warehouse_inventory_unit.grid.columns.reservedAmount
+#        frontend_type: decimal
+      incomingAmount:
+        label: kiboko_mms.pricing.warehouse_inventory_unit.grid.columns.incomingAmount
+#        frontend_type: decimal
+      forecastedAmount:
+        label: kiboko_mms.pricing.warehouse_inventory_unit.grid.columns.forecastedAmount
+#        frontend_type: decimal
+
+    properties:
+      id: ~
+      warehouse_link:
+        type:   url
+        route:  kiboko_mms_pricing_warehouse
+        params:
+          id: warehouse.id
+    actions:
+      warehouse_view:
+        type: navigate
+        label: oro.grid.action.view
+        link: warehouse_link
+        icon: home
+        rowAction: true
+
+  kiboko-mms-inventory-warehouses-datagrid:
+    source:
+      type: orm
+      query:
+        select:
+          - w.id
+          - w.name as warehouseName
+          - address.street
+          - address.city
+          - country.name as countryName
+          - organization.name as ownerName
+        from:
+          - { table: KibokoInventoryBundle:Warehouse, alias: w }
+        join:
+          left:
+            - { join: w.address, alias: address }
+            - { join: w.organization, alias: organization }
+            - { join: address.country, alias: country }
+    columns:
+      warehouseName:
+        label: kiboko_mms.inventory.warehouse.grid.columns.warehouseName
+      street:
+        label: kiboko_mms.inventory.warehouse.grid.columns.street
+      city:
+        label: kiboko_mms.inventory.warehouse.grid.columns.city
+      countryName:
+        label: kiboko_mms.inventory.warehouse.grid.columns.countryName
+      ownerName:
+        label: kiboko_mms.inventory.warehouse.grid.columns.ownerName
+
+    properties:
+      id: ~
+      warehouse_link:
+        type:   url
+        route:  kiboko_mms_inventory_warehouse_view
+        params:
+          id: id
+    actions:
+      warehouse_view:
+        type: navigate
+        label: oro.grid.action.view
+        link: warehouse_link
+        icon: home
+        rowAction: true
+
+    filters:
+      columns:
+        warehouseName:
+          type: string
+          data_name: w.name
+        street:
+          type: string
+          data_name: address.street
+        city:
+          type: string
+          data_name: address.city
+        countryName:
+          type: choice
+          data_name: country.name
+    sorters:
+      columns:
+        warehouseName:
+          data_name: w.name
+        street:
+          data_name: address.street
+        city:
+          data_name: address.city
+        countryName:
+          type: choice
+          data_name: country.name
+      default:
+        warehouseName: DESC
+
+  kiboko-mms-inventory-warehouse-inventoryunit-datagrid:
+    source:
+      type: orm
+      query:
+        select:
+          - wiu
+          - product.name as productName
+          - product.sku as productSku
+          - packaging.name as packagingName
+        from:
+          - { table: KibokoInventoryBundle:WarehouseInventoryUnit, alias: wiu }
+        join:
+          left:
+            - { join: wiu.product, alias: product }
+            - { join: wiu.warehouse, alias: warehouse }
+            - { join: wiu.packaging, alias: packaging }
+        where:
+          and:
+            - product.id = :productId
+      bind_parameters:
+        productId: productId
+    columns:
+      productName:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.productName
+      productSku:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.productSku
+      onHandAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.onHandAmount
+        type: quantity
+      reservedAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.reservedAmount
+        type: quantity
+      incomingAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.incomingAmount
+        type: quantity
+      forecastedAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.forecastedAmount
+        type: quantity
+      forecastedAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.forecastedAmount
+        type: quantity
+      packagingName:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.packagingName
+      unitQuantity:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.unitQuantity
+        type: quantity

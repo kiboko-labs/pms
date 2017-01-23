@@ -2,9 +2,9 @@
 
 namespace Kiboko\Component\Pricing\Model;
 
-use Kiboko\Bundle\PricingManagementBundle\Model\ProductInterface;
+use Kiboko\Component\Product\Model\ProductInterface;
 
-interface PriceListInterface
+interface PriceListInterface extends CustomerSegmentSubjectInterface
 {
     /**
      * @param PriceInterface $price
@@ -40,5 +40,5 @@ interface PriceListInterface
     /**
      * @return CustomerSegmentInterface
      */
-    public function getCustomerSegment();
+    public function getCustomerSegment() : CustomerSegmentInterface;
 }

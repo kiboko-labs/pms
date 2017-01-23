@@ -1,0 +1,20 @@
+navigation:
+  menu_config:
+    items:
+      kiboko_inventory_tab:
+        label: Inventory
+        uri:   '#'
+        extras:
+          position: 5
+      kiboko_inventory_warehouses:
+        label: Warehouses
+        route: kiboko_mms_inventory_warehouse_index
+    tree:
+      application_menu:
+        children:
+          kiboko_inventory_tab:
+            children:
+              kiboko_inventory_warehouses: ~
+
+#  titles:
+#    kiboko_price_list: Price List

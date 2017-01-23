@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+
+include __DIR__ . '/vendor/autoload.php';
+
+$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
+
+$config = simplexml_load_file(__DIR__ . '/../../app/etc/local.xml');
+
+$app = new \Symfony\Component\Console\Application();
+$app->setDispatcher($dispatcher);
+$app->add((new \Kiboko\Component\TFTConnector\Command\PricesStocksCommand())->setConnection($connection));
+$app->run();

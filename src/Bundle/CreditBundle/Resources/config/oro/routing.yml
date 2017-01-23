@@ -1,0 +1,4 @@
+kiboko_mms_catalog:
+    resource: "@KibokoCatalogBundle/Controller"
+    prefix: /product
+    type: annotation

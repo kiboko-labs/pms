@@ -1,0 +1,42 @@
+kiboko_mms:
+  pricing:
+    price_list:
+      grid:
+        columns:
+          productName: Product name
+          productSku: SKU
+          segmentName: Customer segment
+          active: Active
+          start: Start date
+          end: End date
+          pricesCount: Prices available
+
+    products:
+      grid:
+        columns:
+          name: Product name
+          sku: SKU
+          priceListsCount: Price lists
+          onHandAmount: On hand
+          reservedAmount: Reserved
+          incomingAmount: Incoming
+          forecastedAmount: Forecasted
+
+    warehouse_inventory_unit:
+      grid:
+        columns:
+          productName: Product name
+          productSku: SKU
+          warehouseName: Warehouse
+          onHandAmount: On hand
+          reservedAmount: Reserved
+          incomingAmount: Incoming
+          forecastedAmount: Forecasted
+
+    price_history:
+      grid:
+        columns:
+          date: Date
+          priceAmount: Price amount
+          priceCurrency: Currency
+          customerSegmentName: Customer segment

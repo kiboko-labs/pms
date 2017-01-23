@@ -1,0 +1,31 @@
+{
+    "name": "gplanchat/import",
+    "require": {
+        "symfony/console": "^2.7.0",
+        "akeneo/storage-utils": "0.6.x-dev",
+        "akeneo/batch": "0.6.x-dev",
+        "symfony/filesystem": "^3.2",
+        "doctrine/dbal": "^2.4.0"
+    },
+    "authors": [
+        {
+            "name": "Grégory Planchat",
+            "email": "gregory@kiboko.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kiboko\\Component\\TFTConnector\\": "src/TFTConnector/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:akeneo/storage-utils.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:akeneo/batch.git"
+        }
+    ]
+}

@@ -5,11 +5,17 @@
   "license": "proprietary",
   "autoload": {
     "psr-4": {
-      "Kiboko\\Bundle\\PricingManagementBundle\\": "src/Bundle/PricingManagementBundle/",
+      "Kiboko\\Bundle\\CreditBundle\\": "src/Bundle/CreditBundle/",
+      "Kiboko\\Bundle\\InventoryBundle\\": "src/Bundle/InventoryBundle/",
+      "Kiboko\\Bundle\\PricingBundle\\": "src/Bundle/PricingBundle/",
+      "Kiboko\\Bundle\\CatalogBundle\\": "src/Bundle/CatalogBundle/",
+      "Kiboko\\Component\\Credit\\": "src/Component/Credit/",
       "Kiboko\\Component\\DataModel\\": "src/Component/DataModel/",
       "Kiboko\\Component\\Inventory\\": "src/Component/Inventory/",
+      "Kiboko\\Component\\MagentoConnector\\": "src/Component/MagentoConnector/",
       "Kiboko\\Component\\Pricing\\": "src/Component/Pricing/",
-      "Kiboko\\Component\\Product\\": "src/Component/Product/"
+      "Kiboko\\Component\\Product\\": "src/Component/Product/",
+      "Kiboko\\Component\\TFTConnector\\": "src/Component/TFTConnector/"
     }
   },
   "repositories": [

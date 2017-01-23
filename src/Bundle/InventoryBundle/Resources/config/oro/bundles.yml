@@ -1,0 +1,2 @@
+bundles:
+    - Kiboko\Bundle\InventoryBundle\KibokoInventoryBundle

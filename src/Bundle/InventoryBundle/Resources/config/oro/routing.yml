@@ -1,0 +1,4 @@
+kiboko_mms_inventory:
+    resource: "@KibokoInventoryBundle/Controller"
+    prefix: /inventory
+    type: annotation

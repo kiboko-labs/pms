@@ -164,8 +164,6 @@ doctrine:
                 user:         "%database_user%"
                 password:     "%database_password%"
                 charset:      UTF8
-        types:
-            big_number: Kiboko\Component\Pricing\Type\DBAL\BigNumber
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping:         true
