@@ -4,6 +4,7 @@ namespace Kiboko\Component\TFTConnector\Command;
 
 use Akeneo\Bundle\BatchBundle\Entity\JobExecution;
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
+use Akeneo\Bundle\BatchBundle\Item\ExecutionContext;
 use Akeneo\Bundle\BatchBundle\Job\Job;
 use Akeneo\Bundle\BatchBundle\Job\JobInterface;
 use Akeneo\Bundle\BatchBundle\Job\JobRepositoryInterface;
@@ -16,9 +17,9 @@ use Kiboko\Component\TFTConnector\Job\JobRepository;
 use Kiboko\Component\TFTConnector\Processor\PricesStocksProcessor;
 use Kiboko\Component\TFTConnector\Step\ApiCacheCleanup;
 use Kiboko\Component\TFTConnector\Step\ApiCacheFetching;
-use Kiboko\Component\TFTConnector\Writer\MagentoPricesWriter;
-use Kiboko\Component\TFTConnector\Writer\MagentoPromotionCategoryWriter;
-use Kiboko\Component\TFTConnector\Writer\MagentoStocksWriter;
+use Kiboko\Component\MagentoConnector\Writer\PricesWriter;
+use Kiboko\Component\MagentoConnector\Writer\PromotionCategoryWriter;
+use Kiboko\Component\MagentoConnector\Writer\StocksWriter;
 use Oro\Bundle\ImportExportBundle\Context\ContextRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -120,7 +121,7 @@ class PricesStocksCommand extends Command
                     $this->jobRepository,
                     new ApiReader($contextRegistry),
                     new PricesStocksProcessor(),
-                    new MagentoPricesWriter($this->connection)
+                    new PricesWriter($this->connection)
                 ),
                 new ItemStep(
                     'luni_product_stocks',
@@ -128,7 +129,7 @@ class PricesStocksCommand extends Command
                     $this->jobRepository,
                     new ApiReader($contextRegistry),
                     new PricesStocksProcessor(),
-                    new MagentoStocksWriter($this->connection)
+                    new StocksWriter($this->connection)
                 ),
                 new ItemStep(
                     'luni_product_promotion_category',
@@ -136,7 +137,7 @@ class PricesStocksCommand extends Command
                     $this->jobRepository,
                     new ApiReader($contextRegistry),
                     new PricesStocksProcessor(),
-                    new MagentoPromotionCategoryWriter($this->connection)
+                    new PromotionCategoryWriter($this->connection)
                 ),
                 new ApiCacheCleanup(
                     'luni_api_cleanup',
@@ -159,6 +160,9 @@ class PricesStocksCommand extends Command
         $style->note(sprintf('Writing into temporary file %s', $filename));
 
         $execution = new JobExecution();
+        $execution->setExecutionContext(
+            new ExecutionContext()
+        );
         $execution->setJobParameters(
             new JobParameters(
                 [

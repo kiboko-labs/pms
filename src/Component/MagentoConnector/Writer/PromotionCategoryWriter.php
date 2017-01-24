@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiboko\Component\TFTConnector\Writer;
+namespace Kiboko\Component\MagentoConnector\Writer;
 
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
@@ -9,7 +9,7 @@ use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver\Statement;
 
-class MagentoPromotionCategoryWriter implements ItemWriterInterface, StepExecutionAwareInterface
+class PromotionCategoryWriter implements ItemWriterInterface, StepExecutionAwareInterface
 {
     /**
      * @var Connection
@@ -116,7 +116,7 @@ class MagentoPromotionCategoryWriter implements ItemWriterInterface, StepExecuti
 
         $this->searchCategoryAssociationStatement = $this->connection->prepare($qb);
 
-        $this->promotionCategoryId = $this->stepExecution->getJobParameters()->get('promotionCategory');
+        $this->promotionCategoryId = $this->stepExecution->getExecutionContext()->get('promotionCategory');
     }
 
     public function write(array $items)
@@ -127,11 +127,12 @@ class MagentoPromotionCategoryWriter implements ItemWriterInterface, StepExecuti
             $productId = $this->findProductId($item['sku']);
             if (!$productId) {
 //                $this->stepExecution->addWarning(
+//                    $this->stepExecution->getStepName(),
 //                    'The product %sku% was not found',
 //                    [
 //                        '%sku%' => $item['sku'],
 //                    ],
-//                    new DataInvalidItem($item)
+//                    $item
 //                );
                 continue;
             }

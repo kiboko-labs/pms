@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiboko\Component\TFTConnector\Writer;
+namespace Kiboko\Component\MagentoConnector\Writer;
 
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
@@ -9,7 +9,7 @@ use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver\Statement;
 
-class MagentoPricesWriter implements ItemWriterInterface, StepExecutionAwareInterface
+class PricesWriter implements ItemWriterInterface, StepExecutionAwareInterface
 {
     /**
      * @var Connection
@@ -180,11 +180,12 @@ class MagentoPricesWriter implements ItemWriterInterface, StepExecutionAwareInte
             $productId = $this->findProductId($item['sku']);
             if (!$productId) {
 //                $this->stepExecution->addWarning(
+//                    $this->stepExecution->getStepName(),
 //                    'The product %sku% was not found',
 //                    [
 //                        '%sku%' => $item['sku'],
 //                    ],
-//                    new DataInvalidItem($item)
+//                    $item
 //                );
                 continue;
             }
@@ -193,11 +194,12 @@ class MagentoPricesWriter implements ItemWriterInterface, StepExecutionAwareInte
             if (!$this->updateProductDecimalValue($productId, $this->priceAttributeId, $item['price'], $this->stepExecution->getJobParameters()->get('storeId'))) {
                 $this->connection->rollBack();
                 $this->stepExecution->addWarning(
+                    $this->stepExecution->getStepName(),
                     'The price of product %sku% could not be updated, no initial value was found.',
                     [
                         '%sku%' => $item['sku'],
                     ],
-                    new DataInvalidItem($item)
+                    $item
                 );
                 continue;
             }
@@ -220,11 +222,12 @@ class MagentoPricesWriter implements ItemWriterInterface, StepExecutionAwareInte
             if (!$this->updateProductDecimalValue($productId, $this->specialPriceAttributeId, $item['discountedPrice'], $this->stepExecution->getJobParameters()->get('storeId'))) {
                 $this->connection->rollBack();
                 $this->stepExecution->addWarning(
+                    $this->stepExecution->getStepName(),
                     'The special price of product %sku% could not be updated, no initial value was found.',
                     [
                         '%sku%' => $item['sku'],
                     ],
-                    new DataInvalidItem($item)
+                    $item
                 );
                 continue;
             }
@@ -232,11 +235,12 @@ class MagentoPricesWriter implements ItemWriterInterface, StepExecutionAwareInte
             if (!$this->updateProductDatetimeValue($productId, $this->specialFromDateAttributeId, $item['startDate'], $this->stepExecution->getJobParameters()->get('storeId'))) {
                 $this->connection->rollBack();
                 $this->stepExecution->addWarning(
+                    $this->stepExecution->getStepName(),
                     'The special price starting date of product %sku% could not be updated, no initial value was found.',
                     [
                         '%sku%' => $item['sku'],
                     ],
-                    new DataInvalidItem($item)
+                    $item
                 );
                 continue;
             }
@@ -244,11 +248,12 @@ class MagentoPricesWriter implements ItemWriterInterface, StepExecutionAwareInte
             if (!$this->updateProductDatetimeValue($productId, $this->specialToDateAttributeId, $item['endDate'], $this->stepExecution->getJobParameters()->get('storeId'))) {
                 $this->connection->rollBack();
                 $this->stepExecution->addWarning(
+                    $this->stepExecution->getStepName(),
                     'The special price ending date of product %sku% could not be updated, no initial value was found.',
                     [
                         '%sku%' => $item['sku'],
                     ],
-                    new DataInvalidItem($item)
+                    $item
                 );
                 continue;
             }

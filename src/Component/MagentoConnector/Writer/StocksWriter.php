@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiboko\Component\TFTConnector\Writer;
+namespace Kiboko\Component\MagentoConnector\Writer;
 
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
@@ -9,7 +9,7 @@ use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver\Statement;
 
-class MagentoStocksWriter implements ItemWriterInterface, StepExecutionAwareInterface
+class StocksWriter implements ItemWriterInterface, StepExecutionAwareInterface
 {
     /**
      * @var Connection
@@ -102,11 +102,12 @@ class MagentoStocksWriter implements ItemWriterInterface, StepExecutionAwareInte
             $productId = $this->findProductId($item['sku']);
             if (!$productId) {
 //                $this->stepExecution->addWarning(
+//                    $this->stepExecution->getStepName(),
 //                    'The product %sku% was not found',
 //                    [
 //                        '%sku%' => $item['sku'],
 //                    ],
-//                    new DataInvalidItem($item)
+//                    $item
 //                );
                 continue;
             }
@@ -115,14 +116,16 @@ class MagentoStocksWriter implements ItemWriterInterface, StepExecutionAwareInte
             if (!$this->updateProductInventoryStock($productId, $item['stock'])) {
                 $this->connection->rollBack();
                 $this->stepExecution->addWarning(
+                    $this->stepExecution->getStepName(),
                     'The inventory stock of product %sku% could not be updated, no initial value was found.',
                     [
                         '%sku%' => $item['sku'],
                     ],
-                    new DataInvalidItem($item)
+                    $item
                 );
                 continue;
             }
+
             $this->stepExecution->incrementWriteCount();
             $this->connection->commit();
         }
