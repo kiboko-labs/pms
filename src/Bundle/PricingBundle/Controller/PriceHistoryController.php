@@ -44,7 +44,7 @@ class PriceHistoryController extends Controller
      *     requirements={"productId": "\d+", "customerSegmentId": "\d+"}
      * )
      * @ParamConverter("product", class="KibokoCatalogBundle:Product", options={"mapping": {"productId": "id"}})
-     * @ParamConverter("customerSegment", class="KibokoCatalogBundle:CustomerSegment", options={"mapping": {"customerSegmentId": "id"}})
+     * @ParamConverter("customerSegment", class="KibokoPricingBundle:CustomerSegment", options={"mapping": {"customerSegmentId": "id"}})
      * @Template()
      */
     public function segmentAction(ProductInterface $product, CustomerSegmentInterface $customerSegment = null)

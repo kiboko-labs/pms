@@ -1,0 +1,18 @@
+parameters:
+    kiboko_pricing.formatter.property_type.class: Kiboko\Bundle\PricingBundle\Formatter\PriceValueTypeFormatter
+    kiboko_pricing.datagrid_extension.formatter.property.price_property.class: Kiboko\Bundle\PricingBundle\Formatter\Property\PriceProperty
+
+services:
+    kiboko_pricing.formatter.property_type:
+        class: '%kiboko_pricing.formatter.property_type.class%'
+        arguments:
+            - '@oro_locale.twig.number'
+
+    kiboko_pricing.datagrid_extension.formatter.property.price_property:
+        class: %kiboko_pricing.datagrid_extension.formatter.property.price_property.class%
+        arguments:
+            - '@kiboko_pricing.formatter.property_type'
+            - '@logger'
+        tags:
+            - { name: oro_datagrid.extension.formatter.property, type: price }
+

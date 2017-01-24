@@ -1,5 +1,5 @@
 datagrids:
-  kiboko-mms-price-list-datagrid:
+  kiboko-mms-pricing-product-price-list-datagrid:
     source:
       type: orm
       query:
@@ -56,7 +56,7 @@ datagrids:
         icon: time
         rowAction: true
 
-  kiboko-mms-price-history-datagrid:
+  kiboko-mms-pricing-product-price-history-datagrid:
     source:
       type: orm
       query:
@@ -115,7 +115,7 @@ datagrids:
       default:
         date: DESC
 
-  kiboko-mms-customer-segment-price-history-datagrid:
+  kiboko-mms-pricing-customer-segment-price-history-datagrid:
     source:
       type: orm
       query:
@@ -144,7 +144,27 @@ datagrids:
         frontend_type: datetime
       priceAmount:
         label: kiboko_mms.pricing.price_list.grid.columns.priceAmount
+        type: price
+        context:
+          data_type: Oro\Bundle\FilterBundle\Form\Type\Filter\NumberFilterType::DATA_DECIMAL
       priceCurrency:
         label: kiboko_mms.pricing.price_list.grid.columns.priceCurrency
       customerSegmentName:
         label: kiboko_mms.pricing.price_list.grid.columns.customerSegmentName
+
+
+#    const TYPE_DATE         = 'date';
+#    const TYPE_DATETIME     = 'datetime';
+#    const TYPE_TIME         = 'time';
+#    const TYPE_DECIMAL      = 'decimal';
+#    const TYPE_INTEGER      = 'integer';
+#    const TYPE_PERCENT      = 'percent';
+#    const TYPE_CURRENCY     = 'currency';
+#    const TYPE_SELECT       = 'select';
+#    const TYPE_MULTI_SELECT = 'multi-select';
+#    const TYPE_STRING       = 'string';
+#    const TYPE_HTML         = 'html';
+#    const TYPE_BOOLEAN      = 'boolean';
+#    const TYPE_ARRAY        = 'array';
+#    const TYPE_SIMPLE_ARRAY = 'simple_array';
+#    const TYPE_ROW_ARRAY    = 'row_array';

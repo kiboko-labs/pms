@@ -142,10 +142,60 @@ datagrids:
             - { join: wiu.packaging, alias: packaging }
         where:
           and:
+            - warehouse.id = :warehouseId
+      bind_parameters:
+        warehouseId: warehouseId
+    columns:
+      productName:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.productName
+      productSku:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.productSku
+      onHandAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.onHandAmount
+        type: quantity
+      reservedAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.reservedAmount
+        type: quantity
+      incomingAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.incomingAmount
+        type: quantity
+      forecastedAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.forecastedAmount
+        type: quantity
+      forecastedAmount:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.forecastedAmount
+        type: quantity
+      packagingName:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.packagingName
+      unitQuantity:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.unitQuantity
+        type: quantity
+
+  kiboko-mms-inventory-product-warehouse-inventoryunit-datagrid:
+    source:
+      type: orm
+      query:
+        select:
+          - wiu
+          - product.name as productName
+          - product.sku as productSku
+          - packaging.name as packagingName
+          - warehouse.name as warehouseName
+        from:
+          - { table: KibokoInventoryBundle:WarehouseInventoryUnit, alias: wiu }
+        join:
+          left:
+            - { join: wiu.product, alias: product }
+            - { join: wiu.warehouse, alias: warehouse }
+            - { join: wiu.packaging, alias: packaging }
+        where:
+          and:
             - product.id = :productId
       bind_parameters:
         productId: productId
     columns:
+      warehouseName:
+        label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.warehouseName
       productName:
         label: kiboko_mms.inventory.warehouse_inventory_unit.grid.columns.productName
       productSku:
